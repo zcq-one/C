@@ -1,4 +1,4 @@
-//  5. π”√switch÷ÿ–¥¡∑œ∞4°£
+//  5.??switch????4
 
 #include <stdio.h>
 #define STOP '#'
