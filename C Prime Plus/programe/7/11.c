@@ -35,9 +35,9 @@ void printmenu(void)
 int main(void)
 {
     char choose;
-    float vegetable, weight;
-    float aweight, bweight, cweight, all_weight, acost, bcost, ccost, all_cost, discount, freight, total;
-//  物品售价、订购的重量（单位：磅）、订购的蔬菜费用、订单的总费用、折扣（如果有的话）、运费和包装费，以及所有的费用总额
+    double weight;   // 变量传递的中间值
+    double aweight, bweight, cweight, all_weight, acost, bcost, ccost, all_cost, discount, freight, total;
+//  订购的重量（单位：磅）、订购的蔬菜费用、订单的总费用、折扣（如果有的话）、运费和包装费，以及所有的费用总额
     aweight = bweight = cweight = all_weight = acost = bcost = ccost = all_cost = discount = freight = total = 0.0f;
 
     while (1)
@@ -52,7 +52,7 @@ int main(void)
             break;
 
         printf("How many pounds do you want: ");
-        scanf("%f", &weight);
+        scanf("%lf", &weight);
 
         switch (choose)
         {
@@ -63,7 +63,7 @@ int main(void)
         }
 
         do {
-            printf("是否继续输入（输入 p 继续；输入 q 退出）： ");
+            printf("是否继续购买（输入 p 继续；输入 q 退出）： ");
             scanf(" %c", &choose);
         }while ((choose != 'p') && (choose != 'q'));
         if (choose == 'p')
@@ -80,9 +80,11 @@ int main(void)
     ccost += CARROT * cweight;
     all_cost += (acost + bcost + ccost);
     all_weight += (aweight + bweight + cweight);
-    discount = (all_cost > DISCOUNT_PRICE) ? all_cost * DISCOUNT_RATE : 0.0f;
+    discount = (all_cost > DISCOUNT_PRICE) ? all_cost * DISCOUNT_RATE : 0.0;
 
-    if (all_weight <= WEIGHT1)
+    if (all_weight == 0.0)
+        freight = 0.0;
+    else if (all_weight <= WEIGHT1)
         freight = FREIGHT1;
     else if (all_weight <= WEIGHT2)
         freight = FREIGHT2;
@@ -92,7 +94,7 @@ int main(void)
         freight = FREIGHT2 + (all_weight - WEIGHT2) * OVER_PER;
     }
 
-    total = all_cost + freight;
+    total = all_cost + freight - discount;
 
     printf("You bought %g pounds artichoke, it cost $%g.\n", aweight, acost);
     printf("You bought %g pounds beet, it cost $%g.\n", bweight, bcost);
