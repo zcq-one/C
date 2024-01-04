@@ -1,4 +1,4 @@
-//  5.??switch????4
+//  5.使用switch重写练习4。
 
 #include <stdio.h>
 #define STOP '#'
