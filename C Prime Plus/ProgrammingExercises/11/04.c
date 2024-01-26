@@ -1,6 +1,5 @@
 /**
- * 3.设计并测试一个函数，从一行输入中把一个单词读入一个数组中，并丢弃输入行中的其余字符。
- * 该函数应该跳过第1个非空白字符前面的所有空白。将一个单词定义为没有空白、制表符或换行符的字符序列。
+ * 4.设计并测试一个函数，它类似编程练习3的描述，只不过它接受第2个参数指明可读取的最大字符数。
 */
 
 #include <stdio.h>
@@ -8,7 +7,7 @@
 #include <string.h>
 #define LIMIT 81
 
-char * get_a_word(char st[]);
+char * get_a_word(char st[], int n);
 
 int main(void) 
 {
@@ -16,18 +15,18 @@ int main(void)
     char * get;
 
     printf("Enter maximum of %d characters:\n", LIMIT - 1);
-    get = get_a_word(word);
+    get = get_a_word(word, LIMIT);
 
     printf("The first word you put is: ");
     puts(get == NULL ? "No word" : word);
 }
 
-char * get_a_word(char st[])
+char * get_a_word(char st[], int n)
 {
     int i, j;
-    char temp[LIMIT];
+    char temp[n];
 
-    fgets(temp, LIMIT, stdin);
+    fgets(temp, n, stdin);
 
     for (i = 0; i < strlen(temp) && isalpha(temp[i]) == 0; i++)
     {
