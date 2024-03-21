@@ -28,11 +28,13 @@ long Fibonacci(int n)
         return 1;
 }
 
-/*#include <stdio.h>
-int main(void)
-{
-    long Fibonacci[41] = { 0, 1 };
-    for (int i = 2; i < 41; i++)
-        Fibonacci[i] = Fibonacci[i - 1] + Fibonacci[i - 2];
-    printf("%ld", Fibonacci[40]);
-}*/
+/*
+    #include <stdio.h>
+    int main(void)
+    {
+        long Fibonacci[41] = { 0, 1 };
+        for (int i = 2; i < 41; i++)
+            Fibonacci[i] = Fibonacci[i - 1] + Fibonacci[i - 2];
+        printf("%ld", Fibonacci[40]);
+    }
+*/
