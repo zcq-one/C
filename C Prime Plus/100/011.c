@@ -16,7 +16,6 @@ int main(void)
         if (i % 4 == 0)
             putchar('\n');
     }
-
     return 0;
 }
 
